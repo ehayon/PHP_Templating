@@ -12,7 +12,7 @@ class Template
 
     public function __construct($f) {
         $file = $f;
-        if($this->contents = @file_get_contents($this->file) === false) {
+        if(($this->contents = @file_get_contents($this->file)) === false) {
             throw new Exception("Template file $f not found");
         }
     }
