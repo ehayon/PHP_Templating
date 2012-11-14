@@ -11,10 +11,11 @@ class Template
     protected $attributes = array();
 
     public function __construct($f) {
-        $file = $f;
+        $this->file = $f;
         if(($this->contents = @file_get_contents($this->file)) === false) {
             throw new Exception("Template file $f not found");
         }
+
     }
 
     public function set($attr, $value) {
@@ -23,7 +24,7 @@ class Template
 
     public function render() {
         foreach($this->attributes as $attr => $value) {
-            $this->contents = str_replace($attr, $value, $this->contents);
+            $this->contents = str_replace('['.$attr.']', $value, $this->contents);
         }
         return $this->contents;
     }
