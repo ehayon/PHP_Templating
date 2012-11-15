@@ -29,4 +29,8 @@ class Template
         return $this->contents;
     }
 
+    public function values($attributes) {
+        $this->attributes = $attributes;
+    }
+
 }
